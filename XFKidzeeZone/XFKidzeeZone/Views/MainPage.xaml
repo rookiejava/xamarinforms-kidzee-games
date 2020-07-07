@@ -17,7 +17,7 @@
         <Grid
             Margin="25,25,0,25"
             ColumnDefinitions=".2*, *, .2*"
-            RowDefinitions="auto, auto, auto, auto, 320, auto, auto">
+            RowDefinitions="auto, auto, auto, auto, 1200, auto, auto">
             <Image
                 Grid.Row="0"
                 Grid.Column="0"
@@ -26,7 +26,7 @@
             <Label
                 Grid.Row="0"
                 Grid.Column="1"
-                FontSize="20"
+                FontSize="{OnPlatform Android='20', iOS='20', Tizen='30'}"
                 HorizontalOptions="FillAndExpand"
                 HorizontalTextAlignment="Center"
                 Text="Kidzee Zone"
@@ -40,7 +40,7 @@
             <pancake:PancakeView
                 Grid.Row="1"
                 Grid.ColumnSpan="3"
-                Margin="0,20,25,0"
+                Margin="{OnPlatform Android='0,20,25,0', iOS='0,20,25,0', Tizen='0,50,25,0'}"
                 Padding="25,12,25,10"
                 BackgroundColor="#363636"
                 CornerRadius="10">
@@ -57,9 +57,9 @@
                     <Label
                         Grid.Row="1"
                         Grid.Column="0"
-                        FontFamily="FontCamptonLight"
+                        FontFamily="Campton-Light"
                         FontSize="{OnPlatform Android='12',
-                                              iOS='14'}"
+                                              iOS='14', Tizen='25'}"
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Center"
                         Text="Trending" />
@@ -72,9 +72,9 @@
                     <Label
                         Grid.Row="1"
                         Grid.Column="1"
-                        FontFamily="FontCamptonLight"
+                        FontFamily="Campton-Light"
                         FontSize="{OnPlatform Android='12',
-                                              iOS='14'}"
+                                              iOS='14', Tizen='25'}"
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Center"
                         Text="Popular" />
@@ -87,9 +87,9 @@
                     <Label
                         Grid.Row="1"
                         Grid.Column="2"
-                        FontFamily="FontCamptonLight"
+                        FontFamily="Campton-Light"
                         FontSize="{OnPlatform Android='12',
-                                              iOS='14'}"
+                                              iOS='14', Tizen='25'}"
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Center"
                         Text="New Release" />
@@ -98,14 +98,14 @@
             <Label
                 Grid.Row="2"
                 Grid.ColumnSpan="3"
-                Margin="0,30,0,0"
-                FontFamily="FontCamptonBook"
-                FontSize="14"
+                Margin="{OnPlatform Android='0, 30, 0, 0', iOS='0, 30, 0, 0', Tizen='0, 100, 0, 0'}"
+                FontFamily="Campton-Book"
+                FontSize="{OnPlatform Android='14', iOS='14', Tizen='21'}"
                 Text="Recently Popular" />
             <Label
                 Grid.Row="3"
                 Grid.ColumnSpan="3"
-                FontSize="30"
+                FontSize="{OnPlatform Android='30', iOS='30', Tizen='45'}"
                 Text="Discover" />
             <CollectionView
                 x:Name="listGames"
@@ -118,7 +118,7 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
+                        <Grid Padding="{OnPlatform Tizen='20, 0, 20, 20'}">
                             <pancake:PancakeView
                                 Padding="15,20,15,0"
                                 BackgroundGradientAngle="30"
@@ -126,21 +126,22 @@
                                 BackgroundGradientStartColor="{Binding backgroundStartColor}"
                                 CornerRadius="12"
                                 HeightRequest="{OnPlatform Android='165',
-                                                           iOS='160'}"
+                                                           iOS='160', Tizen='700'}"
                                 VerticalOptions="End"
-                                WidthRequest="110">
-                                <Grid ColumnDefinitions="auto, *" RowDefinitions="auto, 35, auto">
+                                WidthRequest="{OnPlatform Android='110',
+                                                           iOS='110', Tizen='480'}">
+                                <Grid ColumnDefinitions="auto, *" RowDefinitions="350, 240, 100">
                                     <Label
                                         Grid.Row="0"
                                         Grid.ColumnSpan="2"
-                                        Margin="0,25,0,0"
-                                        FontSize="16"
+                                        Margin="{OnPlatform Android='0, 25, 0, 0', iOS='0, 25, 0, 0', Tizen='0, 150, 0, 0'}"
+                                        FontSize="{OnPlatform Android='16', iOS='16', Tizen='24'}"
                                         Text="{Binding name}" />
                                     <Label
                                         Grid.Row="1"
                                         Grid.ColumnSpan="2"
-                                        FontFamily="FontCamptonMedium"
-                                        FontSize="12"
+                                        FontFamily="Campton-Medium"
+                                        FontSize="{OnPlatform Android='12', iOS='12', Tizen='18'}"
                                         Opacity="0.5"
                                         Text="{Binding company}"
                                         VerticalOptions="FillAndExpand" />
@@ -148,19 +149,20 @@
                                         Grid.Row="2"
                                         Grid.Column="0"
                                         Padding="{OnPlatform Android='10,15,10,25',
-                                                             iOS='10,15,10,30'}"
+                                                             iOS='10,15,10,30', Tizen='10,15,10,30'}"
                                         BackgroundColor="{StaticResource colorWhite}"
                                         BackgroundGradientEndColor="{Binding backgroundEndColor}"
                                         BackgroundGradientStartColor="{StaticResource colorWhite}"
-                                        CornerRadius="20,20,0,0"
+                                        CornerRadius="40,40,0,0"
                                         HasShadow="False"
                                         HorizontalOptions="Start"
                                         VerticalOptions="End"
-                                        WidthRequest="20">
+                                        WidthRequest="{OnPlatform Android='20', iOS='20', Tizen='60'}"
+                                        HeightRequest="{OnPlatform Tizen='100'}">
                                         <Label
                                             Margin="4,0,0,0"
-                                            FontFamily="FontFontello"
-                                            FontSize="16"
+                                            FontFamily="fontello"
+                                            FontSize="{OnPlatform Android='16', iOS='16', Tizen='24'}"
                                             HorizontalOptions="Center"
                                             Text="{x:Static fonticons:FontIcons.Play}"
                                             TextColor="{Binding backgroundEndColor}"
@@ -170,21 +172,21 @@
                                         Grid.Row="2"
                                         Grid.Column="1"
                                         Margin="{OnPlatform Android='0,0,0,10',
-                                                            iOS='0,0,0,22'}"
+                                                            iOS='0,0,0,22', Tizen='0,0,0,30'}"
                                         HorizontalOptions="EndAndExpand"
                                         Orientation="Horizontal"
                                         VerticalOptions="End">
                                         <Label
                                             Margin="0,2,0,0"
-                                            FontFamily="FontFontello"
-                                            FontSize="12"
+                                            FontFamily="fontello"
+                                            FontSize="{OnPlatform Android='12', iOS='12', Tizen='18'}"
                                             Text="{x:Static fonticons:FontIcons.Star}"
                                             TextColor="{StaticResource colorWhite}"
                                             VerticalOptions="Center" />
                                         <Label
                                             Margin="0,3,0,0"
-                                            FontFamily="FontCamptonBook"
-                                            FontSize="14"
+                                            FontFamily="Campton-Book"
+                                            FontSize="{OnPlatform Android='14', iOS='14', Tizen='21'}"
                                             Text="{Binding rating, StringFormat='{0:N1}'}"
                                             VerticalOptions="Center" />
                                     </StackLayout>
@@ -192,11 +194,11 @@
                             </pancake:PancakeView>
                             <Image
                                 Margin="0,20,0,0"
-                                HeightRequest="160"
+                                HeightRequest="{OnPlatform Android='160', iOS='160', Tizen='600'}"
                                 HorizontalOptions="Center"
                                 Source="{Binding image}"
                                 VerticalOptions="Start"
-                                WidthRequest="120" />
+                                WidthRequest="{OnPlatform Android='120', iOS='120', Tizen='450'}" />
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer
                                     Command="{Binding Path=BindingContext.NavigateToDetailPageCommand, Source={x:Reference listGames}}"
@@ -210,14 +212,14 @@
             <Label
                 Grid.Row="5"
                 Grid.ColumnSpan="3"
-                Margin="0,30,0,0"
-                FontSize="20"
+                Margin="{OnPlatform Android='0, 30, 0, 0', iOS='0, 30, 0, 0', Tizen='0, 100, 0, 0'}"
+                FontSize="{OnPlatform Android='20', iOS='20', Tizen='30'}"
                 Text="Best of the week" />
             <CollectionView
                 Grid.Row="6"
                 Grid.ColumnSpan="3"
                 Margin="0,20,0,0"
-                HeightRequest="300"
+                HeightRequest="{OnPlatform Android='300', iOS='300', Tizen='700'}"
                 HorizontalScrollBarVisibility="Never"
                 ItemsSource="{Binding BestOfWeeks}">
                 <CollectionView.ItemsLayout>
@@ -227,28 +229,30 @@
                     <DataTemplate>
                         <Grid
                             ColumnDefinitions="auto, *"
-                            ColumnSpacing="15"
+                            RowSpacing="{OnPlatform Tizen='50'}"
+                            ColumnSpacing="{OnPlatform Android='15', iOS='15', Tizen='50'}"
                             RowDefinitions="auto, auto, auto">
                             <Image
                                 Grid.RowSpan="3"
                                 Grid.Column="0"
-                                HeightRequest="64"
+                                HeightRequest="{OnPlatform Android='64', iOS='64', Tizen='300'}"
                                 Source="{Binding image}"
-                                WidthRequest="64" />
+                                WidthRequest="{OnPlatform Android='64', iOS='64', Tizen='300'}" />
                             <StackLayout
+                                Padding="{OnPlatform Tizen='0,50,0,0'}"
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 Orientation="Horizontal">
                                 <Label
                                     Margin="2,0,0,5"
-                                    FontFamily="FontFontello"
-                                    FontSize="12"
+                                    FontFamily="fontello"
+                                    FontSize="{OnPlatform Android='12', iOS='12', Tizen='18'}"
                                     Text="{x:Static fonticons:FontIcons.Star}"
                                     TextColor="{StaticResource colorOrange}"
                                     VerticalOptions="Center" />
                                 <Label
-                                    FontFamily="FontCamptonBook"
-                                    FontSize="12"
+                                    FontFamily="Campton-Book"
+                                    FontSize="{OnPlatform Android='12', iOS='12', Tizen='18'}"
                                     Text="{Binding rating, StringFormat='{0:N1}'}"
                                     TextColor="{StaticResource colorOrange}"
                                     VerticalOptions="Center" />
@@ -256,14 +260,14 @@
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                FontFamily="FontCamptonBook"
-                                FontSize="18"
+                                FontFamily="Campton-Book"
+                                FontSize="{OnPlatform Android='18', iOS='18', Tizen='27'}"
                                 Text="{Binding name}" />
                             <Label
                                 Grid.Row="2"
                                 Grid.Column="1"
-                                FontFamily="FontCamptonBook"
-                                FontSize="12"
+                                FontFamily="Campton-Book"
+                                FontSize="{OnPlatform Android='12', iOS='12', Tizen='18'}"
                                 Text="{Binding company}" />
                         </Grid>
                     </DataTemplate>

@@ -116,8 +116,15 @@ namespace XFKidzeeZone.Service
                     name = "Ludo Club",
                     company = "Moonfrog",
                     rating = 4.2,
-                    image = "ludoclub"
-                }
+                    image = "ludoclub.png"
+                },
+                 new BestOfWeek()
+                {
+                    name = "Word Show - Legends",
+                    company = "Etermax",
+                    rating = 4.5,
+                    image = "word.png"
+                },
             };
         }
     }
