@@ -11,8 +11,8 @@
     mc:Ignorable="d">
 
     <ScrollView Margin="{OnPlatform Android='0', iOS='0,-45,0,0'}">
-        <Grid BackgroundColor="{StaticResource colorPinkBackground}" RowSpacing="0">
-            <Grid RowDefinitions="auto, 3920">
+        <Grid BackgroundColor="{Binding Game.backgroundStartColor}" RowSpacing="0">
+            <Grid RowDefinitions="auto, 2830">
                 <StackLayout
                     Grid.Row="0"
                     Margin="{OnPlatform Android='30,30,30,0',
@@ -32,7 +32,7 @@
                                         iOS='0,90,0,0', Tizen='0,700,0,0'}"
                     Padding="{OnPlatform Android='20,80,20,0', iOS='20,80,20,0', Tizen='20,200,20,0'}"
                     BackgroundColor="{StaticResource colorBlackBackground}"
-                    CornerRadius="60,60,0,0"
+                    CornerRadius="200,200,0,0"
                     HasShadow="False"
                     HeightRequest="0"
                     HorizontalOptions="FillAndExpand"
@@ -40,7 +40,7 @@
                     <Grid
                         ColumnDefinitions="*, *, *"
                         ColumnSpacing="20"
-                        RowDefinitions="auto, auto, auto, auto, auto, 445, auto, auto, auto"
+                        RowDefinitions="auto, auto, auto, auto, auto, 445, auto, 350, auto"
                         RowSpacing="10">
                         <Label
                             x:Name="lbCompany"
@@ -87,7 +87,7 @@
                         <pancake:PancakeView
                             Grid.Row="3"
                             Grid.Column="0"
-                            Margin="{OnPlatform Android='0, 18, 0, 0', iOS='0, 18, 0, 0', Tizen='0, 30, 0, 0'}"
+                            Margin="{OnPlatform Android='0, 18, 0, 0', iOS='0, 18, 0, 0', Tizen='0, 18, 0, 0'}"
                             Padding="{OnPlatform Android='10,15', iOS='10,15', Tizen='10,50'}"
                             BackgroundColor="{StaticResource colorBlackBackground36}"
                             CornerRadius="10">
@@ -226,7 +226,7 @@
                                         <Grid
                                             Grid.Column="1"
                                             ColumnDefinitions="auto, auto, *, 100"
-                                            ColumnSpacing="2">
+                                            ColumnSpacing="20">
                                             <Label
                                                 Grid.Column="0"
                                                 Margin="0,2,0,0"
@@ -241,16 +241,16 @@
                                                 Text="{x:Static fonticons:FontIcons.Star}"
                                                 TextColor="{StaticResource colorGray6E}"
                                                 VerticalOptions="Center" />
-                                            <Slider
-                                                x:Name="progressBar"
+                                            <StackLayout
                                                 Grid.Column="2"
-                                                Margin="6,0"
-                                                BackgroundColor="{StaticResource colorGray6E}"
-                                                HeightRequest="{OnPlatform Android='3', iOS='3', Tizen='50'}"
-                                                IsEnabled="False"
-                                                Value="{Binding progress}"
-                                                ThumbColor="{StaticResource colorWhite}"
-                                                VerticalOptions="Center" />
+                                                Margin="10,20,0,0"
+                                                VerticalOptions="Center">
+                                                <ProgressBar
+                                                    x:Name="progressBar"
+                                                    Progress="{Binding progress}"
+                                                    ProgressColor="{StaticResource colorWhite}"
+                                                    VerticalOptions="Center"/>
+                                            </StackLayout>
                                             <Label
                                                 Grid.Column="3"
                                                 Margin="0,2,0,0"
@@ -269,7 +269,7 @@
                             Grid.ColumnSpan="3"
                             Margin="{OnPlatform Android='80,20,80,10',
                                                 iOS='110,20,110,10', Tizen='110,120,110,10'}"
-                            BackgroundColor="{StaticResource colorPinkBackground}"
+                            BackgroundColor="{Binding Game.backgroundStartColor}"
                             CornerRadius="20"
                             FontFamily="Campton-SemiBold"
                             FontSize="{OnPlatform Android='Small', iOS='Small', Tizen='Large'}"

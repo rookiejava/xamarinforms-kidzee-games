@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using XFKidzeeZone.Tizen;
+using ElmSharp;
 using Xamarin.Forms;
 using Xamarin.Forms.PancakeView;
 using Xamarin.Forms.Platform.Tizen;
@@ -13,6 +14,7 @@ namespace XFKidzeeZone.Tizen
     {
         private RoundRectangle _roundRectangle;
         private BorderRectangle _borderRectangle;
+        private EvasObject _nativeContent;
         private IntPtr _evasMap;
 
         public PancakeViewRenderer() : base()
@@ -58,21 +60,21 @@ namespace XFKidzeeZone.Tizen
             {
                 _roundRectangle.Color = Element.BackgroundColor.ToNative();
             }
-            var pancake = Element as PancakeView;
-            if ((pancake.BackgroundGradientStartColor != default(Xamarin.Forms.Color) && pancake.BackgroundGradientEndColor != default(Xamarin.Forms.Color)))
-            {
-                _evasMap = Interop.evas_map_new(4);
-                Interop.evas_map_util_points_populate_from_object_full(_evasMap, _roundRectangle.Handle, 0);
-                ElmSharp.Color startColor = pancake.BackgroundGradientStartColor.ToNative();
-                ElmSharp.Color endColor = pancake.BackgroundGradientEndColor.ToNative();
-                Interop.evas_map_point_color_set(_evasMap, 0, startColor.R, startColor.G, startColor.B, startColor.A);
-                Interop.evas_map_point_color_set(_evasMap, 1, startColor.R, startColor.G, startColor.B, startColor.A);
-                Interop.evas_map_point_color_set(_evasMap, 2, endColor.R, endColor.G, endColor.B, endColor.A);
-                Interop.evas_map_point_color_set(_evasMap, 3, endColor.R, endColor.G, endColor.B, endColor.A);
-                //Interop.evas_map_util_points_color_set(_evasMap, 255, 0, 0, 255);
-                Interop.evas_object_map_set(_roundRectangle.Handle, _evasMap);
-                Interop.evas_object_map_enable_set(_roundRectangle.Handle, true);
-            }
+            //var pancake = Element as PancakeView;
+            //if ((pancake.BackgroundGradientStartColor != default(Xamarin.Forms.Color) && pancake.BackgroundGradientEndColor != default(Xamarin.Forms.Color)))
+            //{
+            //    _evasMap = Interop.evas_map_new(4);
+            //    Interop.evas_map_util_points_populate_from_object_full(_evasMap, _roundRectangle.Handle, 0);
+            //    ElmSharp.Color startColor = pancake.BackgroundGradientStartColor.ToNative();
+            //    ElmSharp.Color endColor = pancake.BackgroundGradientEndColor.ToNative();
+            //    Interop.evas_map_point_color_set(_evasMap, 0, startColor.R, startColor.G, startColor.B, startColor.A);
+            //    Interop.evas_map_point_color_set(_evasMap, 1, startColor.R, startColor.G, startColor.B, startColor.A);
+            //    Interop.evas_map_point_color_set(_evasMap, 2, endColor.R, endColor.G, endColor.B, endColor.A);
+            //    Interop.evas_map_point_color_set(_evasMap, 3, endColor.R, endColor.G, endColor.B, endColor.A);
+            //    //Interop.evas_map_util_points_color_set(_evasMap, 255, 0, 0, 255);
+            //    Interop.evas_object_map_set(_roundRectangle.Handle, _evasMap);
+            //    Interop.evas_object_map_enable_set(_roundRectangle.Handle, true);
+            //}
         }
 
         private void PackChild()
@@ -80,11 +82,18 @@ namespace XFKidzeeZone.Tizen
             if (Element.Content == null)
                 return;
             IVisualElementRenderer renderer = Xamarin.Forms.Platform.Tizen.Platform.GetOrCreateRenderer(Element.Content);
-            Control.PackEnd(renderer.NativeView);
+            _nativeContent = renderer.NativeView;
+            Control.PackEnd(_nativeContent);
         }
 
         private void OnLayout()
         {
+            // empty on purpose
+        }
+
+        protected override void UpdateLayout()
+        {
+            base.UpdateLayout();
             _roundRectangle.Draw(Control.Geometry);
             _borderRectangle.Draw(Control.Geometry);
             UpdateBackgroundColor(false);

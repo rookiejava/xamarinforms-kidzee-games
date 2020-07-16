@@ -15,7 +15,7 @@
 
     <ScrollView>
         <Grid
-            Margin="25,25,0,25"
+            Margin="25,25,25,25"
             ColumnDefinitions=".2*, *, .2*"
             RowDefinitions="auto, auto, auto, auto, 1200, auto, auto">
             <Image
@@ -118,30 +118,30 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="{OnPlatform Tizen='20, 0, 20, 20'}">
+                        <Grid Padding="{OnPlatform Tizen='20, 0, 60, 20'}">
                             <pancake:PancakeView
-                                Padding="15,20,15,0"
+                                Margin="30,0,0,10"
+                                Padding="35,20,35,0"
                                 BackgroundGradientAngle="30"
-                                BackgroundGradientEndColor="{Binding backgroundEndColor}"
-                                BackgroundGradientStartColor="{Binding backgroundStartColor}"
-                                CornerRadius="12"
+                                BackgroundColor="{Binding backgroundStartColor}"
+                                CornerRadius="40"
                                 HeightRequest="{OnPlatform Android='165',
                                                            iOS='160', Tizen='700'}"
                                 VerticalOptions="End"
                                 WidthRequest="{OnPlatform Android='110',
-                                                           iOS='110', Tizen='480'}">
+                                                           iOS='110', Tizen='500'}">
                                 <Grid ColumnDefinitions="auto, *" RowDefinitions="350, 240, 100">
                                     <Label
                                         Grid.Row="0"
                                         Grid.ColumnSpan="2"
                                         Margin="{OnPlatform Android='0, 25, 0, 0', iOS='0, 25, 0, 0', Tizen='0, 150, 0, 0'}"
-                                        FontSize="{OnPlatform Android='16', iOS='16', Tizen='24'}"
+                                        FontSize="{OnPlatform Android='16', iOS='16', Tizen='30'}"
                                         Text="{Binding name}" />
                                     <Label
                                         Grid.Row="1"
                                         Grid.ColumnSpan="2"
                                         FontFamily="Campton-Medium"
-                                        FontSize="{OnPlatform Android='12', iOS='12', Tizen='18'}"
+                                        FontSize="{OnPlatform Android='12', iOS='12', Tizen='22'}"
                                         Opacity="0.5"
                                         Text="{Binding company}"
                                         VerticalOptions="FillAndExpand" />
@@ -149,16 +149,14 @@
                                         Grid.Row="2"
                                         Grid.Column="0"
                                         Padding="{OnPlatform Android='10,15,10,25',
-                                                             iOS='10,15,10,30', Tizen='10,15,10,30'}"
-                                        BackgroundColor="{StaticResource colorWhite}"
-                                        BackgroundGradientEndColor="{Binding backgroundEndColor}"
-                                        BackgroundGradientStartColor="{StaticResource colorWhite}"
+                                                             iOS='10,15,10,30', Tizen='10,30,0,30'}"
+                                        BackgroundColor="{StaticResource colorWhite192}"
                                         CornerRadius="40,40,0,0"
                                         HasShadow="False"
                                         HorizontalOptions="Start"
                                         VerticalOptions="End"
-                                        WidthRequest="{OnPlatform Android='20', iOS='20', Tizen='60'}"
-                                        HeightRequest="{OnPlatform Tizen='100'}">
+                                        WidthRequest="{OnPlatform Android='20', iOS='20', Tizen='100'}"
+                                        HeightRequest="{OnPlatform Tizen='150'}">
                                         <Label
                                             Margin="4,0,0,0"
                                             FontFamily="fontello"
@@ -172,7 +170,7 @@
                                         Grid.Row="2"
                                         Grid.Column="1"
                                         Margin="{OnPlatform Android='0,0,0,10',
-                                                            iOS='0,0,0,22', Tizen='0,0,0,30'}"
+                                                            iOS='0,0,0,22', Tizen='0,0,30,30'}"
                                         HorizontalOptions="EndAndExpand"
                                         Orientation="Horizontal"
                                         VerticalOptions="End">
@@ -212,13 +210,14 @@
             <Label
                 Grid.Row="5"
                 Grid.ColumnSpan="3"
-                Margin="{OnPlatform Android='0, 30, 0, 0', iOS='0, 30, 0, 0', Tizen='0, 100, 0, 0'}"
+                Margin="{OnPlatform Android='0, 30, 0, 0', iOS='0, 30, 0, 0', Tizen='0, 100, 0, 30'}"
                 FontSize="{OnPlatform Android='20', iOS='20', Tizen='30'}"
                 Text="Best of the week" />
             <CollectionView
+                IsEnabled="False"
                 Grid.Row="6"
                 Grid.ColumnSpan="3"
-                Margin="0,20,0,0"
+                Margin="30,20,0,0"
                 HeightRequest="{OnPlatform Android='300', iOS='300', Tizen='700'}"
                 HorizontalScrollBarVisibility="Never"
                 ItemsSource="{Binding BestOfWeeks}">
@@ -229,17 +228,18 @@
                     <DataTemplate>
                         <Grid
                             ColumnDefinitions="auto, *"
-                            RowSpacing="{OnPlatform Tizen='50'}"
+                            RowSpacing="{OnPlatform Tizen='10'}"
                             ColumnSpacing="{OnPlatform Android='15', iOS='15', Tizen='50'}"
                             RowDefinitions="auto, auto, auto">
                             <Image
+                                Margin="{OnPlatform Tizen='0,0,0,50'}"
                                 Grid.RowSpan="3"
                                 Grid.Column="0"
-                                HeightRequest="{OnPlatform Android='64', iOS='64', Tizen='300'}"
+                                HeightRequest="{OnPlatform Android='64', iOS='64', Tizen='250'}"
                                 Source="{Binding image}"
-                                WidthRequest="{OnPlatform Android='64', iOS='64', Tizen='300'}" />
+                                WidthRequest="{OnPlatform Android='64', iOS='64', Tizen='250'}" />
                             <StackLayout
-                                Padding="{OnPlatform Tizen='0,50,0,0'}"
+                                Margin="{OnPlatform Tizen='0,30,0,0'}"
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 Orientation="Horizontal">

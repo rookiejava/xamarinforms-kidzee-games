@@ -17,6 +17,7 @@
         <Color x:Key="colorPinkBackground">#E33E6B</Color>
         <Color x:Key="colorOrange">#FF6A44</Color>
         <Color x:Key="colorWhite">#FFFFFF</Color>
+        <Color x:Key="colorWhite192">#C0FFFFFF</Color>
         <Color x:Key="colorGray6E">#6E6E6E</Color>
     </Application.Resources>
 </Application>
